@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {combineReducers, createStore} from 'redux'
 
+import './index.css'
+
 let todoId = 0
 const list = (state = [], action) => {
 	switch (action.type) {
