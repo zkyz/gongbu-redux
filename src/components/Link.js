@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 
-const Link = ({active, onClick, children}) => {
+const Link = ({active, onclick, children}) => {
   if (active) {
     return <span>{ children }</span>
   }
@@ -10,7 +10,7 @@ const Link = ({active, onClick, children}) => {
        onClick={
          e => {
            e.preventDefault()
-           onClick()
+           onclick()
          }
        }>{ children } </a>
 
@@ -18,9 +18,9 @@ const Link = ({active, onClick, children}) => {
 }
 
 Link.propTypes = {
-  active: React.PropTypes.bool.isRequired,
-  children: React.PropTypes.node.isRequired,
-  onClick: React.PropTypes.func.isRequired
+  active: PropTypes.bool.isRequired,
+  onclick: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 export default Link

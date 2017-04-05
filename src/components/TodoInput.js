@@ -1,16 +1,26 @@
 import React from 'react'
-import {add} from '../actions/todo.action'
+import {add} from '../actions/index'
+import {connect} from 'react-redux'
 
-const TodoInput = (dispatch) => {
-	let text;
+let TodoInput = ({ dispatch }) => {
+  let text
 
-	return (
-		<fieldset>
-			<input ref={ node => text = node.value }/>
-			<button onClick={
-				() => dispatch(add(text))
-			}
-			>add</button>
-		</fieldset>
-	)
+  return (
+    <fieldset>
+      <input ref={ node => text = node }/>
+      <button onClick={
+        () => {
+          dispatch(add(text.value))
+
+          text.focus()
+          text.value = ''
+        }
+      }
+      >add</button>
+    </fieldset>
+  )
 }
+
+TodoInput = connect()(TodoInput)
+
+export default TodoInput

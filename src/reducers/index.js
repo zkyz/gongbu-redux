@@ -27,7 +27,7 @@ const todo = (state = [], action) => {
 	}
 }
 
-const visibilityFilter = (state = 'ALL', action) => {
+const filter = (state = 'ALL', action) => {
 	switch (action.type) {
 		case 'SET_VISIBILITY_FILTER':
 			return action.filter
@@ -36,5 +36,5 @@ const visibilityFilter = (state = 'ALL', action) => {
 	}
 }
 
-const reducers = combineReducers({ todo, visibilityFilter })
+const reducers = combineReducers({ todo, filter })
 export default reducers
