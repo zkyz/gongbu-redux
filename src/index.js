@@ -1,21 +1,20 @@
 import React from 'react'
 import {render} from 'react-dom'
 import {createStore} from 'redux'
+import reducers from './reducers'
 import {Provider} from 'react-redux'
-import todo from './reducers/index'
-import TodoApp from './components/TodoApp'
+import App from './components/App'
 
-import './index.css'
 
-//noinspection JSUnresolvedFunction
+//noinspection JSUnresolvedFunction, JSUnresolvedVariable
 const store = createStore(
-  todo,
+  reducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 render(
-	<Provider store={ store }>
-		<TodoApp />
-	</Provider>,
-	document.getElementById("root")
+  <Provider store={ store }>
+    <App />
+  </Provider>,
+  document.getElementById("root")
 )
