@@ -1,10 +1,10 @@
 import React from 'react'
 import {render} from 'react-dom'
-import {createStore} from 'redux'
+import App from './components/App'
 import reducers from './reducers'
 import {Provider} from 'react-redux'
-import App from './components/App'
-
+import {createStore} from 'redux'
+import './index.css'
 
 //noinspection JSUnresolvedFunction, JSUnresolvedVariable
 const store = createStore(
@@ -12,9 +12,26 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
+const rootEl = document.getElementById('root')
+
 render(
   <Provider store={ store }>
     <App />
   </Provider>,
-  document.getElementById("root")
+  rootEl
 )
+
+if (module.hot) {
+  module.hot.accept(
+    './components/App',
+    () => {
+      const NextApp = require('./components/App').default
+      render(
+        <Provider store={ store }>
+          <NextApp />
+        </Provider>,
+        rootEl
+      )
+    }
+  )
+}

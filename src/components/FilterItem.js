@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react'
 
-const FilterItem = ({active, filter, children, click}) => {
+const FilterItem = ({filter, active, click, children}) => {
   if (active) {
     return (
       <span>{ children }</span>

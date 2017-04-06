@@ -6,8 +6,8 @@
     "lodash": "latest",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "redux": "^3.6.0",
-    "react-redux": "^5.0.3"
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0"
   },
   "devDependencies": {
     "deep-freeze": "0.0.1",
@@ -18,12 +18,12 @@
     "redux-devtools": "^3.3.2"
   },
   "scripts": {
-    "build-css": "node-sass src/ -o src/",
-    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
-    "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
+    "build-css": "node-sass src/ -o src/",
+    "eject": "react-scripts eject",
+    "start": "npm-run-all -p watch-css start-js",
+    "start-js": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive"
   }
 }

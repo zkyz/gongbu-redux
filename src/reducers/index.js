@@ -29,7 +29,7 @@ const todo = (state = [], action) => {
 
 const filter = (state = 'ALL', action) => {
   switch (action.type) {
-    case 'SET_FILTER':
+    case 'FILTER':
       return action.filter
     default:
       return state

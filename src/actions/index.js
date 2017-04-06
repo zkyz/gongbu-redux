@@ -12,6 +12,6 @@ export const toggle = (id) => ({
 })
 
 export const setFilter = (filter) => ({
-  type: 'SET_FILTER',
+  type: 'FILTER',
   filter
 })
