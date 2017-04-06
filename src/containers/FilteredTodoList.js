@@ -2,7 +2,6 @@ import {connect} from 'react-redux'
 import TodoList from '../components/TodoList'
 import {toggle} from '../actions/index'
 
-
 const filteredTodoList = (todo, filter) => {
   switch (filter) {
     case 'ACTIVE':
@@ -19,7 +18,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  click: (id) => dispatch(toggle(id))
+  click: id => dispatch(toggle(id))
 })
 
 const FilteredTodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList)
