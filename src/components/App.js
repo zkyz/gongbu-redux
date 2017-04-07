@@ -1,12 +1,12 @@
 import React from 'react'
-import Input from './Input'
 import FilteredTodoList from '../containers/FilteredTodoList'
 import Filters from './Filters'
+import TodoForm from './TodoForm'
 
 const App = () => (
   <div>
     <h1>TODO</h1>
-    <Input />
+    <TodoForm />
     <FilteredTodoList />
     <Filters />
   </div>

@@ -15,3 +15,8 @@ export const setFilter = (filter) => ({
   type: 'FILTER',
   filter
 })
+
+export const setSnackbar = (message) => ({
+  type: 'SNACKBAR',
+  message
+})

@@ -1,22 +1,11 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {add} from '../actions/index'
+import {TextField} from 'material-ui'
 
-let Input = ({ dispatch }) => {
-  let text
-
-  return (
-    <form onSubmit={
-      e => {
-        e.preventDefault()
-        dispatch(add(text.value))
-      }
-    }>
-      <input ref={ node => text = node } placeholder="Write your everything!" />
-    </form>
-  )
-}
-
-Input = connect()(Input)
+const Input = ({ input, label, meta: { touched, error } }) => (
+  <TextField { ...input }　
+             errorText={ touched && error }
+             floatingLabelText={ label }
+             hintText={ label } />
+)
 
 export default Input

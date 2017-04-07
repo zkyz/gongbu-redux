@@ -1,7 +1,6 @@
-body {
-  color: #000;
+@import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
 
-  &> ul {
-    color: #333;
-  }
+* {
+  font-family: 'Noto Sans KR', sans-serif !important;
+  font-weight: 300;
 }
