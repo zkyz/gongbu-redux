@@ -20,6 +20,7 @@ const Input = (attr) => {
 
 Input.propType = {
 	name:      PropTypes.string.isRequired,
+	id:				 PropTypes.string,
 	label:     PropTypes.string,
 	hint:      PropTypes.string,
 	autoFocus: PropTypes.bool
