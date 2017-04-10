@@ -4,12 +4,12 @@ import Filters from './Filters'
 import TodoForm from './TodoForm'
 
 const App = () => (
-  <div>
-    <h1>TODO</h1>
-    <TodoForm />
-    <FilteredTodoList />
-    <Filters />
-  </div>
+	<div>
+		<h1>TODO</h1>
+		<TodoForm />
+		<FilteredTodoList />
+		<Filters />
+	</div>
 )
 
 export default App

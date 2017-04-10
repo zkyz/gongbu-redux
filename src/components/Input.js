@@ -4,20 +4,25 @@ import {Field} from 'redux-form'
 import {pickBy} from 'lodash'
 
 const Input = (attr) => {
-  const {label, hint} = attr
-  const newAttr = pickBy(attr, (x, y) => y != 'label' && y != 'hint')
+	const {id, name, label, placeholder} = attr
+	const otherAttr = pickBy(attr, (x, y) => y !== 'label' && y !== 'placeholder')
 
-  return (
-    <Field name={ name }
-           floatingLabelText={ label }
-           hintText={ hint }
-           component={ TextField }
-           { ...newAttr } />
-  )
+	return (
+		<Field id={ id }
+					 name={ name }
+					 floatingLabelText={ label || id || name }
+					 hintText={ placeholder }
+					 component={ TextField }
+					 { ...otherAttr }
+		/>
+	)
 }
 
 Input.propType = {
-  name: PropTypes.string.isRequired
+	name:      PropTypes.string.isRequired,
+	label:     PropTypes.string,
+	hint:      PropTypes.string,
+	autoFocus: PropTypes.bool
 }
 
 export default Input

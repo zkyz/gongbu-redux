@@ -37,19 +37,9 @@ const filter = (state = 'ALL', action) => {
   }
 }
 
-const snackbar = (state = '', action) => {
-  switch (action.type) {
-    case 'SNACKBAR':
-      return action.message
-    default:
-      return state
-  }
-}
-
 const reducers = combineReducers({
   todo,
   filter,
-  snackbar,
   form: formReducer
 })
 export default reducers
