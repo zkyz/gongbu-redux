@@ -7,7 +7,7 @@ import {createStore} from 'redux'
 import './index.css'
 import {MuiThemeProvider} from 'material-ui'
 import {getMuiTheme} from 'material-ui/styles/index'
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import injectTapEventPlugin from 'react-tap-event-plugin'
 
 injectTapEventPlugin()
 
@@ -19,14 +19,13 @@ const store = createStore(
 
 const rootEl = document.getElementById('root')
 
+const myTheme = getMuiTheme({
+  borderRadius: 4
+})
+
 render(
   <Provider store={ store }>
-    <MuiThemeProvider muiTheme={
-      getMuiTheme({
-        fontFamily: 'Noto Sans KR',
-        borderRadius: 2
-      })
-    }>
+    <MuiThemeProvider muiTheme={ myTheme }>
       <App />
     </MuiThemeProvider>
   </Provider>,
@@ -40,7 +39,7 @@ if (module.hot) {
       const NextApp = require('./components/App').default
       render(
         <Provider store={ store }>
-          <MuiThemeProvider>
+          <MuiThemeProvider muiTheme={ myTheme }>
             <NextApp />
           </MuiThemeProvider>
         </Provider>,

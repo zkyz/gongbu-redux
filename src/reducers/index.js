@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux'
+import { reducer as formReducer } from 'redux-form'
 
 const todo = (state = [], action) => {
   switch (action.type) {
@@ -48,6 +49,7 @@ const snackbar = (state = '', action) => {
 const reducers = combineReducers({
   todo,
   filter,
-  snackbar
+  snackbar,
+  form: formReducer
 })
 export default reducers
