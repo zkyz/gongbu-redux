@@ -9,6 +9,8 @@ const todo = (state = [], action) => {
         {
           id: action.id,
           text: action.text,
+          created: new Date(),
+          finished: null,
           completed: false,
         }
       ]
@@ -17,6 +19,7 @@ const todo = (state = [], action) => {
         if (i.id === action.id) {
           return {
             ...i,
+            finished: !i.completed ? new Date() : null,
             completed: !i.completed
           }
         }

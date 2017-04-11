@@ -18,11 +18,12 @@ const Input = (attr) => {
 	)
 }
 
-Input.propType = {
+Input.propTypes = {
 	name:      PropTypes.string.isRequired,
 	id:				 PropTypes.string,
 	label:     PropTypes.string,
 	hint:      PropTypes.string,
+	validate:  PropTypes.func,
 	autoFocus: PropTypes.bool
 }
 

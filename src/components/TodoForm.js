@@ -3,50 +3,52 @@ import {reduxForm} from 'redux-form'
 import Input from './Input'
 import {add} from '../actions/index'
 
-const validate = values => {
-	console.log('- validate --------------')
-	console.log(values)
+import 'material-ui'
+import Icon from './Icon'
 
-	if (values.message && values.message.length < 5) {
-		return {
-			message: 'Too short.'
-		}
-	}
+const validate = values => {
 }
 
 const asyncValidate = values => {
-	console.log('- asyncValidate --------------')
-
-	return new Promise(fx => setTimeout(fx, 1500))
-	.then(() => {
-		if (['test', 'check', 'hello'].includes(values.message)) {
-			// eslint-disable-next-line
-			throw {
-				message: 'Stop the testing'
-			}
-		}
-	})
+  return new Promise(fx => setTimeout(fx, 1500))
+    .then(() => {
+      if (['test', 'check', 'hello'].includes(values.message)) {
+        // eslint-disable-next-line
+        throw {
+          message: 'Stop the testing'
+        }
+      }
+    })
 }
 
-const submit = (values, dispatch) => {
-	console.log('- submit --------------')
-	console.log(values)
+const submit = (values, pristine, dispatch) => {
+  if (pristine) {
 
-	dispatch(add(values.message))
+  }
+
+  if (values.message && values.message.length < 5) {
+
+  }
+
+  dispatch(add(values.message))
 }
 
 const TodoForm = ({handleSubmit, dispatch, pristine}) => (
-	<form onSubmit={ handleSubmit(values => submit(values, dispatch)) }>
-		<Input name="message"
-					 placeholder="What's your mission?"
-		/>
-	</form>
+  <form onSubmit={ handleSubmit(values => submit(values, pristine, dispatch)) }>
+    <Input name="message"
+           placeholder="What's your mission?"
+           validate={
+             value => {
+               return 'test'
+             }
+           }
+    />
+    <Icon>warning</Icon>
+  </form>
 )
 
-
 export default reduxForm({
-	form:            'todo-form',
-	validate,
-	asyncValidate,
-	asyncBlurFields: ['']
+  form: 'todo-form',
+  validate,
+  asyncValidate
 })(TodoForm)
