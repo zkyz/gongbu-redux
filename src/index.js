@@ -13,38 +13,50 @@ injectTapEventPlugin()
 
 //noinspection JSUnresolvedFunction, JSUnresolvedVariable
 const store = createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	reducers,
+	{
+		todo: [{
+			id:        -1,
+			text:      'Checking',
+			completed: false
+		}]
+	},
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 const rootEl = document.getElementById('root')
 
 const myTheme = getMuiTheme({
-  borderRadius: 4
+	borderRadius: 4,
+	fontFamily:   ['Noto Sans KR', 'sans-serif'],
+	palette:      {
+		textColor:    '#555',
+		accent1Color: '#000'
+	}
 })
 
+const body = (App) => (
+	<Provider store={ store }>
+		<MuiThemeProvider muiTheme={ myTheme }>
+			{ App }
+		</MuiThemeProvider>
+	</Provider>
+)
+
 render(
-  <Provider store={ store }>
-    <MuiThemeProvider muiTheme={ myTheme }>
-      <App />
-    </MuiThemeProvider>
-  </Provider>,
-  rootEl
+	body(<App />),
+	rootEl
 )
 
 if (module.hot) {
-  module.hot.accept(
-    './components/App',
-    () => {
-      const NextApp = require('./components/App').default
-      render(
-        <Provider store={ store }>
-          <MuiThemeProvider muiTheme={ myTheme }>
-            <NextApp />
-          </MuiThemeProvider>
-        </Provider>,
-        rootEl
-      )
-    }
-  )
+	module.hot.accept(
+		'./components/App',
+		() => {
+			const NextApp = require('./components/App').default
+			render(
+				body(<NextApp />),
+				rootEl
+			)
+		}
+	)
 }
